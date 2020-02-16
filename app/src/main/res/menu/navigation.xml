@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="ماشین حساب"
+        android:icon="@drawable/calc"
+        android:id="@+id/navigation_calc"/>
+    <item android:title="حسابداری"
+        android:icon="@drawable/ic_action_name"
+        android:id="@+id/navigation_accounting"/>
+    <item android:title="بازی یار"
+        android:icon="@drawable/gamepad"
+        android:id="@+id/navigation_games"/>
+    <item android:title="ابزارها"
+        android:icon="@drawable/tools"
+        android:id="@+id/navigation_tools"/>
+    <item android:title="درباره"
+        android:icon="@drawable/about"
+        android:id="@+id/navigation_about"/>
+
+</menu>
