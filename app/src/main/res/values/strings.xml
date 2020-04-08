@@ -3,4 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password_show_passwordmake">password</string>
+    <string name="password_activity_show_password">مشاهده رمزهای ذخیره شده</string>
+    <string name="password_activity_save_password">ذخیره رمز عبور</string>
+    <string name="password_activity_make_password">پسورد بساز !</string>
+    <string name="password_activity_specialchar_count">تعداد کاراکتر خاص:</string>
+    <string name="password_activity_number_count">تعداد عدد در رشته:</string>
+    <string name="password_activity_password_length">طول رشته:</string>
 </resources>

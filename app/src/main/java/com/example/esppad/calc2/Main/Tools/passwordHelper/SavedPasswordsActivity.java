@@ -16,8 +16,6 @@ public class SavedPasswordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_passwords);
         back = (ImageButton) findViewById(R.id.btnBackSavedPassAct);
-
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
