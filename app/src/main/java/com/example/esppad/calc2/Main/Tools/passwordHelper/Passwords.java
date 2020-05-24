@@ -3,11 +3,13 @@ package com.example.esppad.calc2.Main.Tools.passwordHelper;
 public class Passwords {
     int id;
     String url;
+    String user;
     String password;
 
-    public Passwords(int id, String url, String password) {
+    public Passwords(int id, String url,String user ,String password) {
         this.id = id;
         this.url = url;
+        this.user = user;
         this.password = password;
     }
 
@@ -17,6 +19,10 @@ public class Passwords {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getUSer(){
+        return user;
     }
 
     public String getPassword() {

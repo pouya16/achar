@@ -3,7 +3,6 @@ package com.example.esppad.calc2.Main.Tools.passwordHelper;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.esppad.calc2.Main.G;
 import com.example.esppad.calc2.R;
 
 import java.util.Random;
@@ -26,16 +26,18 @@ import at.markushi.ui.CircleButton;
 public class PasswordActivity extends AppCompatActivity {
     Random random;
     Button passwordGenerate;
-    TextView passwordShow;TextView savedPasswordTxt;TextView savedUrlTxt;
+    TextView passwordShow;TextView savedPasswordTxt;TextView savedUrlTxt;TextView savedUesrTxt;
     CheckBox lengthCheckBox;CheckBox numbersCheckBox;CheckBox specialCheckBox;
-    EditText lengthEditTxt;EditText numbersEditTxt;EditText spacialEditTxt;EditText urlEditText;
+    EditText lengthEditTxt;EditText numbersEditTxt;EditText spacialEditTxt;EditText urlEditText;EditText  userEditText;
     ImageButton lengthPlus;ImageButton lengthMinus;ImageButton numbersPlus;
     ImageButton numbersMinus;ImageButton specialPlus;ImageButton specialsMinus;
     String generatedPassword;
     CardView passwordCard;
     Button passwordBtn;
     Button savedPasswords;
+    Button  addViewPassword;
     CircleButton deletePasswordBtn;
+    G MyHelper;
 
 
     @Override
@@ -46,6 +48,7 @@ public class PasswordActivity extends AppCompatActivity {
         savedPasswordTxt = (TextView) findViewById(R.id.passwordSavedPassAct);
         savedUrlTxt = (TextView) findViewById(R.id.urlSavedPassAct);
         passwordShow = (TextView) findViewById(R.id.passwordText);
+        savedUesrTxt = (TextView) findViewById(R.id.userSavedPassAct);
         passwordGenerate = (Button) findViewById(R.id.generatePasswordBtn);
         lengthCheckBox = (CheckBox) findViewById(R.id.lengthCheckBoxPasswordAct);
         numbersCheckBox = (CheckBox) findViewById(R.id.numbersCheckBoxPasswordAct);
@@ -54,6 +57,7 @@ public class PasswordActivity extends AppCompatActivity {
         numbersEditTxt = (EditText) findViewById(R.id.numberEditTxtPasswordAct);
         spacialEditTxt = (EditText) findViewById(R.id.specialEditTxtPasswordAct);
         urlEditText = (EditText) findViewById(R.id.siteAdressTxtPasswordAct);
+        userEditText = (EditText) findViewById(R.id.siteUserTxtPasswordActivity);
         lengthPlus = (ImageButton) findViewById(R.id.lengthPlusImageBtnPasswordAct);
         lengthMinus = (ImageButton) findViewById(R.id.lengthNegImageBtnPasswordAct);
         numbersPlus = (ImageButton) findViewById(R.id.numberPlusImageBtnPasswordAct);
@@ -63,8 +67,11 @@ public class PasswordActivity extends AppCompatActivity {
         passwordCard = (CardView) findViewById(R.id.passwordConatainerPasswordAc);
         passwordBtn = (Button) findViewById(R.id.savePasswordBtnPasswordAct);
         savedPasswords = (Button) findViewById(R.id.btnSavedPassPasswordsAct);
+        addViewPassword = (Button) findViewById(R.id.btnEditWatchPassPasswordAct);
         deletePasswordBtn = (CircleButton) findViewById(R.id.btnDeletePasswordAct);
-
+        MyHelper = new G(getApplicationContext(),getString(R.string.password_show_passwordmake),"passworddb");
+        MyHelper.createPasswordsAppDirectories();
+        MyHelper.createOrOpenDataBase();
 
         final ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
@@ -86,8 +93,14 @@ public class PasswordActivity extends AppCompatActivity {
         savedPasswords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PasswordActivity.this,SavedPasswordsActivity.class);
-                PasswordActivity.this.startActivity(intent);
+                if(MyHelper.getSharedPreferenceValue()!=null){
+                    String pass = MyHelper.getSharedPreferenceValue();
+
+                }else{
+
+                }
+                //Intent intent = new Intent(PasswordActivity.this,SavedPasswordsActivity.class);
+                //PasswordActivity.this.startActivity(intent);
             }
         });
 
@@ -98,6 +111,7 @@ public class PasswordActivity extends AppCompatActivity {
                     passwordCard.setVisibility(View.VISIBLE);
                     savedPasswordTxt.setText(passwordShow.getText().toString());
                     savedUrlTxt.setText(urlEditText.getText().toString());
+                    savedUesrTxt.setText(userEditText.getText().toString());
                 }else{
                     Toast.makeText(PasswordActivity.this,"لطفا اول پسورد بسازید",Toast.LENGTH_SHORT).show();
                 }
